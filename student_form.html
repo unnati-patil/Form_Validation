@@ -1,0 +1,257 @@
+<html>
+  <head>
+    <style type="text/css">
+      body
+      {
+      background-color:#d0e4fe;
+      }
+      h1
+      {
+      color:orange;
+      text-align:center;
+      }
+      
+      .center
+      {
+      text-align:center;
+      position: absolute;
+      top: 15%;
+      left: 40%;
+      border-color: black;
+      }
+    </style>
+    
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <title>Form Validation</title>
+    <script type="text/javascript">
+      
+      function formReset()
+      {
+      document.getElementById("frm").reset();
+      }
+      
+      function validate()
+      {
+      
+      if( document.myForm.Name.value == "" )
+      {
+      alert( "Please provide your name!" );
+      document.myForm.Name.focus() ;
+      return false;
+      }
+      if( document.myForm.EMail.value == "" )
+      {
+      alert( "Please provide your Email!" );
+      document.myForm.EMail.focus() ;
+      return false;
+      }
+      else 
+      {
+      validateEmail();
+      
+      }
+      if (document.myForm.Password.value.length < 5)
+						  {
+						  alert("Please enter at least 5 characters in the \"Password\" field.");
+						  theForm.Password.focus();
+						  return (false);
+						  }
+						  if (document.myForm.Password.value != document.myForm.Password2.value)
+						  {
+						  alert("The two passwords are not the same.");
+						  theForm.Password2.focus();
+						  return (false);
+						  }
+						  
+						  if (document.myForm.date_month.selectedIndex <= 0)
+												  {
+												  alert("Please select a month.");
+												  document.myForm.date_month.focus();
+												  return (false);
+												  }
+												  
+												  if (document.myForm.date_day.selectedIndex <= 0)
+																		{
+																		alert("Please select a day.");
+																		document.myForm.date_day.focus();
+																		return (false);
+																		}
+																		
+																		if (document.myForm.date_year.selectedIndex <= 0)
+																							       {
+																							       alert("Please select a year.");
+																							       document.myForm.date_year.focus();
+																							       return (false);
+																							       }
+																							       
+																							       
+																							       var radioSelected = false;
+																							       for (i = 0;  i < document.myForm.gender.length;  i++)
+																										{
+																										if (document.myForm.gender[i].checked)
+																										radioSelected = true;
+																										}
+																										if (!radioSelected)
+																										{
+																										alert("Please select one of the \"Gender\" options.");
+																										return (false);
+																										}
+																										
+																										if( document.myForm.Zip.value == "" ||
+																										isNaN( document.myForm.Zip.value ) ||
+																										document.myForm.Zip.value.length != 5 )
+																										{
+																										alert( "Please provide a zip in the format #####." );
+																										document.myForm.Zip.focus() ;
+																										return false;
+																										}
+																										if( document.myForm.Country.value == "-1" )
+																										{
+																										alert( "Please provide your country!" );
+																										return false;
+																										}
+																										return( true );
+																										}
+																										
+																										
+																										
+																										function validateEmail()
+																										{
+																										var emailID = document.myForm.EMail.value;
+																										atpos = emailID.indexOf("@");
+																										dotpos = emailID.lastIndexOf(".");
+																										if (atpos < 1 || ( dotpos - atpos < 2 )) 
+																														    {
+																														    alert("Please enter correct email ID")
+	  																													    document.myForm.EMail.focus() ;
+       																														    return false;
+   																														    }
+   																														    return( true );
+																														    }
+																														    
+																														    </script>
+  </head>
+  <body>
+    <h1> Student Form </h1>
+    
+    <form id="frm" action="validation.php" method="POST" name="myForm" onsubmit="return(validate());">
+      <table class="center" cellpadding="2" cellspacing="2" border="1">
+	<tbody><tr>
+	    <td align="right">Name</td>
+	    <td><input name="Name" type="text"></td>
+	  </tr>
+	  <tr>
+	    <td align="right">EMail</td>
+	    <td><input name="EMail" type="text"></td>
+	  </tr>
+	  <tr>
+	    <td align="right">Password</td>
+	    <td><input name="Password" type="password"></td>
+	  </tr>
+	  <tr>
+	    <td align="right">Verify Password</td>
+	    <td><input name="Password2" type="password"></td>
+	  </tr>
+	  <tr>
+	    <td rowspan="3" align="right">Date of Birth</td>
+     	    <td><select name="date_month">
+		<option selected="selected" value="0">
+		</option><option value="1">1
+		</option><option value="2">2
+		</option><option value="3">3
+		</option><option value="4">4
+		</option><option value="5">5
+		</option><option value="6">6
+		</option><option value="7">7
+		</option><option value="8">8
+		</option><option value="9">9
+		</option><option value="10">10
+		</option><option value="11">11
+		</option><option value="12">12		
+	      </option></select>MM</td>
+	    
+	  </tr><tr>
+	    <td><select name="date_day">
+		<option selected="selected" value="0">
+		</option><option value="1">1
+		</option><option value="2">2
+		</option><option value="3">3
+		</option><option value="4">4
+		</option><option value="5">5
+		</option><option value="6">6
+		</option><option value="7">7
+		</option><option value="8">8
+		</option><option value="9">9
+		</option><option value="10">10
+		</option><option value="11">11
+		</option><option value="12">12
+		</option><option value="13">13
+		</option><option value="14">14
+		</option><option value="15">15
+		</option><option value="16">16
+		</option><option value="17">17
+		</option><option value="18">18
+		</option><option value="19">19
+		</option><option value="20">20
+		</option><option value="21">21
+		</option><option value="22">22
+		</option><option value="23">23
+		</option><option value="24">24
+		</option><option value="25">25
+		</option><option value="26">26
+		</option><option value="27">27
+		</option><option value="28">28
+		</option><option value="29">29
+		</option><option value="30">30
+		</option><option value="31">31		
+	      </option></select>DD</td>
+	  </tr>
+	  <tr>
+	    <td><select name="date_year">
+		<option selected="selected" value="0">
+		</option><option value="2000">2000
+		</option><option value="1999">1999
+		</option><option value="1998">1998
+		</option><option value="1997">1997
+		</option><option value="1996">1996
+		</option><option value="1995">1995
+		</option><option value="1994">1994
+		</option><option value="1993">1993
+		</option><option value="1992">1992
+		</option><option value="1991">1991
+		</option><option value="1990">1990
+	      </option></select>YY</td> 
+	  </tr><tr>
+	    <td rowspan="2" align="right">Gender</td>
+	    <td><input name="gender" value="male" type="radio"> Male</td>
+	  </tr>
+	  <tr>
+	    <td><input name="gender" value="female" type="radio"> Female</td>
+	  </tr>
+ 	  
+	  <tr>
+	    <td align="right">Zip Code</td>
+	    <td><input name="Zip" type="text"></td>
+	  </tr>
+	  <tr>
+	    <td align="right">Country</td>
+	    <td>
+	      <select name="Country">
+		<option value="-1" selected="selected">[choose yours]</option>
+		<option value="1">USA</option>
+		<option value="2">UK</option>
+		<option value="3">INDIA</option>
+	      </select>
+	    </td>
+	  </tr>
+	  
+	  <tr>
+	    <td align="right"></td>
+	    <td><input value="Submit" type="submit"></td>
+	  </tr>
+      </tbody></table>
+    </form>
+    
+    
+  </body>
+</html>
