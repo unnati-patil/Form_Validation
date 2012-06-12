@@ -1,34 +1,4 @@
-<html>
-<head>
-	<style type="text/css">
-	body
-	{
-		background-color:#d0e4fe;
-	}
-	h1
-	{
-		color:orange;
-		text-align:center;
-	}
-	.div
-	{
-	      
-	}
-	.center
-	{
-		text-align:left;
-		position: absolute;
-		top: 12%;
-		left: 37%;
-		border-color: black;
-	}
-	</style>
-    
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" >
-	<title>Form Validation</title>
-	<script type="text/javascript">
-      
-	function formReset()
+function formReset()
 	{
 		document.getElementById("frm").reset();
 	}
@@ -158,7 +128,7 @@
 	//var pincode = document.getElementById("pincode").value();
 function post
 	{
-		var user_object = {	"utf8" : '✓', 
+		var user_object = {	 
 								"authenticity_token" : "TWq5wTGiDBnUuWj3t6Qte9EhTJOWpHViSJYZTLVtsL4=",
 								"user":     {
                                         "name":$('#name').val().toString(),
@@ -181,57 +151,4 @@ function post
                   success:alert("success 3")
            });
 	}			
-  																												    
-</script>
-</head>
-<body>
-  
-	<h1> Student Form </h1>
-    
-	<form  id="frm" method="POST" name="myForm" onsubmit="validate()">
-	<table class="center" cellpadding="2" cellspacing="2" border="0">
-	<tbody><tr>
-		<td id="name" align="right">name : </td>
-		<td><input name="name" type="text"></td>
-	</tr>
-	<tr>
-		<td id="email" align="right">email : </td>
-		<td><input name="email" type="text"></td>
-	</tr>
-	<tr>
-		<td id="age" align="right">age : </td>
-		<td><input name="age" type="text"></td>
-	</tr>
-	  
-	<tr>
-		<td id="gender" rowspan="2" align="right">gender : </td>
-		<td><input name="gender" value="male" type="radio"> Male</td>
-	</tr>
-	<tr>
-		<td><input name="gender" value="female" type="radio"> Female</td>
-	</tr>
-	<tr>
-		<td id="address" align="right">address : </td>
-		<td><input name="address" type="text"></td>
-	</tr>
- 	 <tr>
-		<td id="description" align="right">description : </td>
-		<td><input name="description" type="text"></td>
-	</tr>
- 	  
-	<tr>
-		<td id="pincode" align="right">pincode :</td>
-		<td><input name="pincode" type="text"></td>
-	</tr>
-	  
-	  
-	<tr>
-		<td align="right"><input type="button" value="Reset Form" onClick="this.form.reset()" /></td>
-		<td><input value="Submit" type="submit"></td>
-	</tr>
-		</tbody></table>
-	</form>
-    
-    
-</body>
-</html>
+  											
