@@ -1,6 +1,5 @@
 <html>
 <head>
-
 	<style type="text/css">
 	body
 	{
@@ -24,10 +23,9 @@
     
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" >
 	<title>Form Validation</title>
-	
 	<script type="text/javascript" language="javascript" src="jquery-1.7.2.min.js"> </script>
-	
 	<script type="text/javascript">
+
       
 	function reset()
 	{
@@ -42,7 +40,7 @@
 			alert( "Please provide your name!" );
 			document.myForm.name.focus() ;
 			return false;
-		}git@github.com:unnati-webonise/Form_Validation.git
+		}
 		else
 		{
 			valid=true;
