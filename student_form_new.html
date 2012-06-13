@@ -1,278 +1,279 @@
 <html>
 <head>
 
-	<style type="text/css">
-	body
-	{
-		background-color:#d0e4fe;
+<style type="text/css">
+   body
+  {
+    background-color:#d0e4fe;
+  }
+   h1
+   {
+   color:orange;
+     text-align:center;
+   }
+
+.center
+{
+  text-align:left;
+ position: absolute;
+ top: 12%;
+ left: 37%;
+  border-color: black;
+}
+</style>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" >
+     <title>Form Validation</title>
+     
+     <script type="text/javascript" language="javascript" src="jquery-1.7.2.min.js"> </script>
+     
+     <script type="text/javascript">
+     
+     function reset()
+{
+  document.getElementById("frm").reset();
+}
+
+function validate()
+{
+  var valid;
+  if(document.myForm.name.value == "" )
+    {
+      alert( "Please provide your name!" );
+      document.myForm.name.focus() ;
+      return false;
+    }
+  else
+    {
+      valid=true;
+    }
+  if( document.myForm.email.value == "" )
+    {
+      alert( "Please provide your email!" );
+      document.myForm.email.focus() ;
+      return false;
+    }
+  else if( document.myForm.email.value != "" )
+    {
+      //validateemail();
+      var emailID = document.myForm.email.value;
+      atpos = emailID.indexOf("@");
+      dotpos = emailID.lastIndexOf(".");
+      if (atpos < 1 || ( dotpos - atpos < 2 )) 
+	{		
+	  alert("Please enter correct email ID")
+	    document.myForm.email.focus() ;
+	  return false;
 	}
-	h1
+    }
+  else
+    {
+      valid=true;
+    }
+  
+  if( document.myForm.age.value == "" )
+    {
+      alert( "Please provide your age!" );
+      document.myForm.email.focus() ;
+      return false;
+    }
+  else
+    {
+      valid=true;
+    }
+  
+  var checkOK = "0123456789";
+  var checkStr = document.myForm.age.value;
+  var allValid = true;
+  
+  for (i = 0;  i < checkStr.length;  i++)
+    {
+      ch = checkStr.charAt(i);
+      for (j = 0;  j < checkOK.length;  j++)
+	if (ch == checkOK.charAt(j))
+	  break;
+      if (j == checkOK.length)
 	{
-		color:orange;
-		text-align:center;
+	  allValid = false;
+	  break;
 	}
-	
-	.center
-	{
-		text-align:left;
-		position: absolute;
-		top: 12%;
-		left: 37%;
-		border-color: black;
-	}
-	</style>
-    
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" >
-	<title>Form Validation</title>
-	
-	<script type="text/javascript" language="javascript" src="jquery-1.7.2.min.js"> </script>
-	
-	<script type="text/javascript">
-      
-	function reset()
-	{
-		document.getElementById("frm").reset();
-	}
-      
-	function validate()
-	{
-      var valid;
-		if( document.myForm.name.value == "" )
-		{
-			alert( "Please provide your name!" );
-			document.myForm.name.focus() ;
-			return false;
-		}git@github.com:unnati-webonise/Form_Validation.git
-		else
-		{
-			valid=true;
-		}
-		if( document.myForm.email.value == "" )
-		{
-			alert( "Please provide your email!" );
-			document.myForm.email.focus() ;
-			return false;
-		}
-		else if( document.myForm.email.value != "" )
-		{
-			//validateemail();
-      	var emailID = document.myForm.email.value;
-			atpos = emailID.indexOf("@");
-			dotpos = emailID.lastIndexOf(".");
-			if (atpos < 1 || ( dotpos - atpos < 2 )) 
-			{		
-		    	alert("Please enter correct email ID")
-			 	document.myForm.email.focus() ;
-			 	return false;
-			}
-		}
-		else
-		{
-			valid=true;
-		}
-		
-      if( document.myForm.age.value == "" )
-		{
-			alert( "Please provide your age!" );
-			document.myForm.email.focus() ;
-			return false;
-		}
-		else
-		{
-			valid=true;
-		}
-		
-		var checkOK = "0123456789";
-		var checkStr = document.myForm.age.value;
-		var allValid = true;
-		
-		for (i = 0;  i < checkStr.length;  i++)
-		{
-			ch = checkStr.charAt(i);
-			for (j = 0;  j < checkOK.length;  j++)
-				if (ch == checkOK.charAt(j))
-					break;
-				if (j == checkOK.length)
-				{
-					allValid = false;
-					break;
-				}
-		}
-		if (!allValid)
-		{
-			alert("Please enter only digit characters in the \"age\" field.");
-			document.myForm.age.focus();
-			return (false);
-		}
-		else
-		{
-			valid=true;
-		}		  
-																	       
-		var radioSelected = false;
-		for (i = 0;  i < document.myForm.gender.length;  i++)
-		{
-			if (document.myForm.gender[i].checked)
-			radioSelected = true;
-		}
-		if (!radioSelected)
-		{
-			alert("Please select one of the \"Gender\" options.");
-			return (false);
-		}
-		else
-		{
-			valid=true;
-		}
-	
-		if(document.myForm.address.value == "")
-		{
-			alert( "Please provide Address" );
-			document.myForm.address.focus() ;
-			return false;
-		}	
-		else 
-		if (document.myForm.address.value.length > 150)
-		{
-			alert("Please enter at most 150 characters in the Address field.");
-			document.myForm.address.focus();
-			return (false);
-		}	
-		else
-		{
-			valid=true;
-		}
-				
-		
-		if(document.myForm.description.value == "")
-		{
-			alert( "Please provide Description" );
-			document.myForm.description.focus() ;
-			return false;
-		}	
-		else
-		if (document.myForm.description.value.length > 150)
-		{
-			alert("Please enter at most 150 characters in the description field.");
-			document.myForm.description.focus();
-			return (false);
-		}	
-		else
-		{
-			valid=true;
-		}
-																									
-		if( document.myForm.pincode.value == "" || isNaN( document.myForm.pincode.value ) || document.myForm.pincode.value.length != 6 )
-		{
-			alert( "Please provide a pincode in the format #####." );
-			document.myForm.pincode.focus() ;
-			return false;
-		}
-		else
-		{
-			valid=true;
-		}
-		
-		if (valid==true)
-			post();
-																						
-		return( true );
-			
-	}
-																										
-																							
-   
+    }
+  if (!allValid)
+    {
+      alert("Please enter only digit characters in the \"age\" field.");
+      document.myForm.age.focus();
+      return (false);
+    }
+  else
+    {
+      valid=true;
+    }		  
+  
+  var radioSelected = false;
+  for (i = 0;  i < document.myForm.gender.length;  i++)
+    {
+      if (document.myForm.gender[i].checked)
+	radioSelected = true;
+    }
+  if (!radioSelected)
+    {
+      alert("Please select one of the \"Gender\" options.");
+      return (false);
+    }
+  else
+    {
+      valid=true;
+    }
+  
+  if(document.myForm.address.value == "")
+    {
+      alert( "Please provide Address" );
+      document.myForm.address.focus() ;
+      return false;
+    }	
+  else 
+    if (document.myForm.address.value.length > 150)
+      {
+	alert("Please enter at most 150 characters in the Address field.");
+	document.myForm.address.focus();
+	return (false);
+      }	
+    else
+      {
+	valid=true;
+      }
+  
+  
+  if(document.myForm.description.value == "")
+    {
+      alert( "Please provide Description" );
+      document.myForm.description.focus() ;
+      return false;
+    }	
+  else
+    if (document.myForm.description.value.length > 150)
+      {
+	alert("Please enter at most 150 characters in the description field.");
+	document.myForm.description.focus();
+	return (false);
+      }	
+    else
+      {
+	valid=true;
+      }
+  
+  if( document.myForm.pincode.value == "" || isNaN( document.myForm.pincode.value ) || document.myForm.pincode.value.length != 6 )
+    {
+      alert( "Please provide a pincode in the format #####." );
+      document.myForm.pincode.focus() ;
+      return false;
+    }
+  else
+    {
+      valid=true;
+    }
+  
+  if (valid==true)
+    post();
+  
+  return( true );
+  
+}
+
+
+
 function post()
 {	
-	//var name = document.getElementById("name").value();
-	//var email = document.getElementById("email").value();
-	//var age = document.getElementById("age").value();
-	//var gender = document.getElementById("gender").value();	
-	//var address = document.getElementById("address").value();
-	//var description = document.getElementById("description").value();
-	//var pincode = document.getElementById("pincode").value();
-
-	var user_object = {	
-								"authenticity_token" : "TWq5wTGiDBnUuWj3t6Qte9EhTJOWpHViSJYZTLVtsL4=",
-								"user":     {
-                                        "name":$('input[name=name]').val().toString(),
-                                        "email":$('input[name=email]').val().toString(),
-                                        "age":$('input[name=age]').val().toString(),
-                                        "gender":$('input[name=gender]:checked').val().toString(),
-                                        "address":$('input[name=address]').val().toString(),
-                                        "description":$('input[name=description]').val().toString(),
-                                        "pincode":$('input[name=pincode]').val().toString()
-                                    },
-								"commit" : "Create User"
-							};
-						
-					//	alert(user_object.user.name);		
-					
-	 
-    $.ajax({
-                  type:"POST",
-                  url:"http://blooming-beach-2334.herokuapp.com/users",
-                  data:user_object,
-                  dataType:"json",
-                  success:alert("success ")
-           });
-           
-          alert(user_object);
+  //var name = document.getElementById("name").value();
+  //var email = document.getElementById("email").value();
+  //var age = document.getElementById("age").value();
+  //var gender = document.getElementById("gender").value();	
+  //var address = document.getElementById("address").value();
+  //var description = document.getElementById("description").value();
+  //var pincode = document.getElementById("pincode").value();
+  
+  var user_object = {	
+    "authenticity_token" : "TWq5wTGiDBnUuWj3t6Qte9EhTJOWpHViSJYZTLVtsL4=",
+    "user":     {
+      "name":$('input[name=name]').val().toString(),
+      "email":$('input[name=email]').val().toString(),
+      "age":$('input[name=age]').val().toString(),
+      "gender":$('input[name=gender]:checked').val().toString(),
+      "address":$('input[name=address]').val().toString(),
+      "description":$('input[name=description]').val().toString(),
+      "pincode":$('input[name=pincode]').val().toString()
+    },
+    "commit" : "Create User"
+  };
+  
+  //	alert(user_object.user.name);		
+  
+  
+  $.ajax({
+    type:"POST",
+	url:"http://blooming-beach-2334.herokuapp.com/users",
+	data:user_object,
+	dataType:"json",
+	success:alert("success ")
+	});
+  
+  alert(user_object);
 }										
-  																											    
+
 </script>
 
 
 
 </head>
 <body>
+
+<h1> Student Form </h1>
+    
+<form  method="POST" id="frm" name="myForm" onsubmit="return validate(this)">
+  <table class="center" cellpadding="2" cellspacing="2" border="0">
+  <tbody><tr>
+  <td id="name" align="right">name : </td>
+  <td><input name="name" type="text"></td>
+  </tr>
+  <tr>
+  <td id="email" align="right">email : </td>
+  <td><input name="email" type="text"></td>
+  </tr>
+  <tr>
+  <td id="age" align="right">age : </td>
+  <td><input name="age" type="text"></td>
+  </tr>
   
-	<h1> Student Form </h1>
-    
-	<form  method="POST" id="frm" name="myForm" onsubmit="return validate(this)">
-	<table class="center" cellpadding="2" cellspacing="2" border="0">
-	<tbody><tr>
-		<td id="name" align="right">name : </td>
-		<td><input name="name" type="text"></td>
-	</tr>
-	<tr>
-		<td id="email" align="right">email : </td>
-		<td><input name="email" type="text"></td>
-	</tr>
-	<tr>
-		<td id="age" align="right">age : </td>
-		<td><input name="age" type="text"></td>
-	</tr>
-	  
-	<tr>
-		<td id="gender" rowspan="2" align="right">gender : </td>
-		<td><input name="gender" value="male" type="radio"> Male</td>
-	</tr>
-	<tr>
-		<td><input name="gender" value="female" type="radio"> Female</td>
-	</tr>
-	<tr>
-		<td id="address" align="right">address : </td>
-		<td><input name="address" type="text"></td>
-	</tr>
- 	 <tr>
-		<td id="description" align="right">description : </td>
-		<td><input name="description" type="text"></td>
-	</tr>
- 	  
-	<tr>
-		<td id="pincode" align="right">pincode :</td>
-		<td><input name="pincode" type="text"></td>
-	</tr>
-	  
-	  
-	<tr>
-		<td align="right"><input type="button" value="Reset Form" onClick="this.form.reset()" /></td>
-		<td><input value="Submit" type="submit"></td>
-	</tr>
-		</tbody></table>
-	</form>
-    
-    
-</body>
-</html>
+  <tr>
+  <td id="gender" rowspan="2" align="right">gender : </td>
+  <td><input name="gender" value="male" type="radio"> Male</td>
+  </tr>
+  <tr>
+  <td><input name="gender" value="female" type="radio"> Female</td>
+  </tr>
+  <tr>
+  <td id="address" align="right">address : </td>
+  <td><input name="address" type="text"></td>
+  </tr>
+  <tr>
+  <td id="description" align="right">description : </td>
+  <td><input name="description" type="text"></td>
+  </tr>
+  
+  <tr>
+  <td id="pincode" align="right">pincode :</td>
+  <td><input name="pincode" type="text"></td>
+  </tr>
+  
+  
+  <tr>
+  <td align="right"><input type="button" value="Reset Form" onClick="this.form.reset()" /></td>
+  <td><input value="Submit" type="submit"></td>
+  </tr>
+  </tbody></table>
+  </form>
+  
+  
+  </body>
+  </html>
+  
