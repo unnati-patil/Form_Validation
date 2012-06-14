@@ -20,11 +20,14 @@ function getData()
         console.log(data);
 	
         var tableFormat ="<table cellpadding='2' cellspacing='2' border='1'><tr><td>NAME</td><td>MAIL ID</td><td>AGE</td><td>&nbsp;</td><td>GENDER</td><td>&nbsp;</td><td>ADDRESS</td><td>DESCRIPTION</td><td>PINCODE</td></tr>";
-        for(var i=0;i<data.length;i++){
+
+        for(var i=0;i<data.length;i++)
+	{
                 tableFormat+='<tr><td>'+data[i]['name']+'</td><td>'+data[i]['email']+'</td><td>'+data[i]['age']+'</td><td></td><td>'+data[i]['gender']+'</td><td></td><td>'+data[i]['address']+'</td><td>'+data[i]['description']+'</td><td>'+data[i]['pincode']+'</td></tr>'
-              }
+        }
+
 		tableFormat+='</table>'
-		//table1+='</table>'
+
                 $('body').html(tableFormat);
         }
 	
