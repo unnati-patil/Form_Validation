@@ -220,13 +220,13 @@ function post()
 																											    
 </script>
 
-
-
 </head>
 <body>
   
-	<h1> Student Form </h1>
+	
     	<a href="dataList.html">Data List </a>
+	<div style="height:40px; width:400px"><h1> Student Form </h1>
+	</div>	
 	<form  method="POST" id="frm" name="myForm" onsubmit="return validate()">
 	<table class="center" cellpadding="2" cellspacing="2" border="0">
 	<tbody><tr>
@@ -262,7 +262,6 @@ function post()
 		<td id="pincode" align="right">pincode :</td>
 		<td><input name="pincode" type="text"></td>
 	</tr>
-	  
 	  
 	<tr>
 		<td align="right"><input type="button" value="Reset Form" onClick="this.form.reset()" /></td>
