@@ -26,7 +26,9 @@
     
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" >
 	<title>Form Validation</title>
-	<script type="text/javascript" >
+	<script type="text/javascript" language="javascript" src="jquery-1.7.2.min.js"> </script>
+	<script type="text/javascript">
+
       
 	function formReset()
 	{
@@ -35,40 +37,53 @@
       
 	function validate()
 	{
-      
+      		var valid=false;
 		if( document.myForm.name.value == "" )
 		{
 			alert( "Please provide your name!" );
 			document.myForm.name.focus() ;
-			// // return false;
+			return false;
+		}
+		else
+		{
+			valid=true;
 		}
 		if( document.myForm.email.value == "" )
 		{
 			alert( "Please provide your email!" );
 			document.myForm.email.focus() ;
-			// return false;
+			return false;
 		}
-		else 
+		else if( document.myForm.email.value != "" )
 		{
 			//validateemail();
-      	var emailID = document.myForm.email.value;
+      			var emailID = document.myForm.email.value;
 			atpos = emailID.indexOf("@");
 			dotpos = emailID.lastIndexOf(".");
 			if (atpos < 1 || ( dotpos - atpos < 2 )) 
 			{		
 		    	alert("Please enter correct email ID")
 			 	document.myForm.email.focus() ;
-			 	// // return false;
+			 	return false;
 			}
-			// // return( true );
+			valid=true;
+		}
+		else
+		{
+			valid=true;
 		}
 		
-      if( document.myForm.age.value == "" )
+      		if( document.myForm.age.value == "" )
 		{
 			alert( "Please provide your age!" );
 			document.myForm.email.focus() ;
-			// // return false;
+			return false;
 		}
+		else
+		{
+			valid=true;
+		}
+
 		var checkOK = "0123456789";
 		var checkStr = document.myForm.age.value;
 		var allValid = true;
@@ -89,7 +104,11 @@
 		{
 			alert("Please enter only digit characters in the \"age\" field.");
 			document.myForm.age.focus();
-			// // return (false);
+			return (false);
+		}
+		else
+		{
+			valid=true;
 		}		  
 																	       
 		var radioSelected = false;
@@ -101,95 +120,114 @@
 		if (!radioSelected)
 		{
 			alert("Please select one of the \"Gender\" options.");
-			// // return (false);
+			return (false);
 		}
-	
+		else
+		{
+			valid=true;
+		}
+
 		if(document.myForm.address.value == "")
 		{
 			alert( "Please provide Address" );
 			document.myForm.address.focus() ;
-			// // return false;
+			return false;
 		}	
 		else
 		if (document.myForm.address.value.length > 150)
 		{
 			alert("Please enter at most 150 characters in the Address field.");
 			document.myForm.address.focus();
-			// // return (false);
+			return (false);
+		}
+		else
+		{
+			valid=true;
 		}			
 		
 		if(document.myForm.description.value == "")
 		{
 			alert( "Please provide Description" );
 			document.myForm.description.focus() ;
-			// // return false;
+			return false;
 		}	
 		else
 		if (document.myForm.description.value.length > 150)
 		{
 			alert("Please enter at most 150 characters in the description field.");
 			document.myForm.description.focus();
-			// // return (false);
+			return (false);
+		}
+		else
+		{
+			valid=true;
 		}	
 																									
-		if( document.myForm.pincode.value == "" || isNaN( document.myForm.pincode.value ) || document.myForm.pincode.value.length != 5 )
+		if( document.myForm.pincode.value == "" || isNaN( document.myForm.pincode.value ) || document.myForm.pincode.value.length != 6 )
 		{
 			alert( "Please provide a pincode in the format #####." );
 			document.myForm.pincode.focus() ;
-			// // return false;
+			return false;
 		}
-																										
-		post();
+		else
+		{
+			valid=true;
+		}			
+       							
+		if(valid==true)
+			post();			
+				
+		return( true );
+		
 	
 		
 		
 	}
 																										
 																										
-																										
+																						
    
-		
-	//var name = document.getElementById("name").value();
-	//var email = document.getElementById("email").value();
-	//var age = document.getElementById("age").value();
-	//var gender = document.getElementById("gender").value();	
-	//var address = document.getElementById("address").value();
-	//var description = document.getElementById("description").value();
-	//var pincode = document.getElementById("pincode").value();
 function post()
-	{
-		var user_object = {	 
-								"authenticity_token" : "TWq5wTGiDBnUuWj3t6Qte9EhTJOWpHViSJYZTLVtsL4=",
-								"user":     {
-                                        "name":$('#name').val().toString(),
-                                        "email":$('#email').val().toString(),
-                                        "age":$('#age').val().toString(),
+{	
+	
+	var user_object = {	
+				"authenticity_token" : "TWq5wTGiDBnUuWj3t6Qte9EhTJOWpHViSJYZTLVtsL4=",
+				"user":     {
+                                        "name":$('input[name=name]').val().toString(),
+                                        "email":$('input[name=email]').val().toString(),
+                                        "age":$('input[name=age]').val().toString(),
                                         "gender":$('input[name=gender]:checked').val().toString(),
-                                        "address":$('#address').val().toString(),
-                                        "description":$('#description').val().toString(),
-                                        "pincode":$('#pincode').val().toString()
+                                        "address":$('input[name=address]').val().toString(),
+                                        "description":$('input[name=description]').val().toString(),
+                                        "pincode":$('input[name=pincode]').val().toString()
                                     },
-								"commit" : "Create User"
+				"commit" : "Create User"
 							};
-								
-								alert(user_object.user.name);
-	 
-    	$.ajax({
+						
+						//alert(user_object.user.name);		
+						
+    $.ajax({
                   type:"POST",
                   url:"http://blooming-beach-2334.herokuapp.com/users",
                   data:user_object,
                   dataType:"json",
-                  success:alert("success 3")
+                  success:alert("success")
            });
-	}			
-  																												    
+
+	alert(user_object);
+}										
+ 
+																											    
 </script>
+
+
+
 </head>
 <body>
   
 	<h1> Student Form </h1>
-    
-	<form  id="frm" method="POST" name="myForm" onsubmit="validate()">
+    	<a href="dataList.html">Data List </a>
+	<form  method="POST" id="frm" name="myForm" onsubmit="return validate()">
 	<table class="center" cellpadding="2" cellspacing="2" border="0">
 	<tbody><tr>
 		<td id="name" align="right">name : </td>

@@ -1,0 +1,42 @@
+<html>
+<head>
+
+<script type="text/javascript" language="javascript" src="jquery-1.7.2.min.js"> </script>
+<script type="text/javascript">
+//$(document).ready(function()
+
+function getData()
+{
+
+ 
+
+    var jsonData ="users.json";
+
+    $.ajax({
+        url:jsonData,
+        type:"GET",
+        dataType: 'json',
+        success:function (data){
+
+        console.log(data);
+	var table1="<table cellpadding='2' cellspacing='2' border='1'>";
+        var format ="<table cellpadding='2' cellspacing='2' border='1'><tr><td>NAME</td><td>MAIL ID</td><td>AGE</td><td>&nbsp;</td><td>GENDER</td><td>&nbsp;</td><td>ADDRESS</td><td>DESCRIPTION</td><td>PINCODE</td></tr>";
+        for(var i=0;i<data.length;i++){
+                format+='<tr><td>'+data[i]['name']+'</td><td>'+data[i]['email']+'</td><td>'+data[i]['age']+'</td><td></td><td>'+data[i]['gender']+'</td><td></td><td>'+data[i]['address']+'</td><td>'+data[i]['description']+'</td><td>'+data[i]['pincode']+'</td></tr>'
+              }
+		format+='</table>'
+		//table1+='</table>'
+                $('body').html(format);
+        }
+	
+        });
+       
+        
+ }
+
+</script>
+</head>
+<body>
+<input type="button" value="GetData" onClick="getData();" />
+</body>
+</html>
